@@ -1,22 +1,5 @@
 #include"stdio.h"
 
-
-BennettDixon
-/
-holbertonschool-low_level_programming
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Security
-Insights
-holbertonschool-low_level_programming/0x06-pointers_arrays_strings/3-strspn.c
-@BennettDixon
-BennettDixon string span, custom strspn
- 1 contributor
-31 lines (30 sloc)  526 Bytes
 /**
  * _strspn - finds length of prefix substring
  *
