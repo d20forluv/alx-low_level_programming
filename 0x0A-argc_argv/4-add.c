@@ -1,29 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "main.h"
+#include <string.h>
 /**
  * main - Entry Point
- * @argc: arguments
- * @argv: array pointing to arguments
- * Return: 0
+ * @a: number of args
+ * @b: pointer to args
+ * Return: 1 for error, 0 not
  */
-int main(int argc, char *argv[])
+int main(int a, char **b)
 {
-	int i, sum = 0;
+	int sum = 0;
+	char s[15];
+	char *convert, *input;
 
-	if (argc < 1)
-		return (0);
-
-	for (i = 1; i < argc; i++)
+	while (--a)
 	{
-		if (!atoi(argv[i]))
+		b++, input = *b;
+		sprintf(s, "%d", atoi(*b));
+		convert = s;
+		if (strcmp(input, convert) != 0)
 		{
-			printf("%s\n", "Error");
+			printf("Error\n");
 			return (1);
 		}
-		sum += atoi(argv[i]);
+		sum += atoi(*b);
 	}
 	printf("%d\n", sum);
-
 	return (0);
 }
