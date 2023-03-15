@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "holberton.h"
+#include "nain.h"
 /**
  * argstostr - main entry
  * @ac: int input
