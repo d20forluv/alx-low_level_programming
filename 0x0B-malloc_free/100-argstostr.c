@@ -1,64 +1,42 @@
 #include <stdio.h>
-#include <stdio.h>
 #include <stdlib.h>
-
+#include "holberton.h"
 /**
- * strtow - concatenates all the arguments of your program
- *@str: string
- *@av: arguments
- * Return: a pointer to a new string
+ * argstostr - main entry
+ * @ac: int input
+ * @av: double pointer array
+ * Return: 0
  */
-char **strtow(char *str)
+char *argstostr(int ac, char **av)
 {
-	int i, w, j, k, count, m, wordf;
-	char **p;
-	char *x;
+	int i, n, k = 0, len = 0;
+	char *str;
 
-	w = 0;
-	j = 0;
-	i = 0;
-	count = 0;
-	if (*str == '\0' || str == NULL)
+	if (ac == 0 || av == NULL)
 		return (NULL);
-	for (i = 0; str[i] != '\0'; i++)
+
+	for (i = 0; i < ac; i++)
 	{
-		if (str[i] == ' ' && (str[i + 1] != ' ' || str[i + 1] == '\0'))
-			w++;
+		for (n = 0; av[i][n]; n++)
+			len++;
 	}
-	p = (char **)malloc((w + 1) * sizeof(char *));
-	if (p == NULL)
+	len += ac;
+
+	str = malloc(sizeof(char) * len + 1);
+	if (str == NULL)
 		return (NULL);
-	for (wordf = 0; str[wordf] && j <= w; wordf++)
+
+	for (i = 0; i < ac; i++)
 	{
-		count = 0;
-		if (str[wordf] != ' ')
+		for (n = 0; av[i][n]; n++)
 		{
-			for (i = wordf ; str[i] != '\0'; i++)
-			{
-				if (str[i] == ' ')
-					break;
-				count++;
-			}
-			*(p + j) = (char *)malloc((count + 1) * sizeof(char));
-			if (*(p + j) == NULL)
-			{
-				for (k = 0; k <= j; k++)
-				{
-					x = p[k];
-					free(x);
-				}
-				free(p);
-				return (NULL);
-			}
-			for (m = 0; wordf < i; wordf++)
-			{
-				p[j][m] = str[wordf];
-				m++;
-			}
-			p[j][m] = '\0';
-			j++;
+			str[k] = av[i][n];
+			k++;
+		}
+		if (str[k] == '\0')
+		{
+			str[k++] = '\n';
 		}
 	}
-	p[j] = NULL;
-	return (p);
+	return (str);
 }
