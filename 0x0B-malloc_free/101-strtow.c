@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "main.h"
 
 /**
  * number - function to calculate number of words
@@ -80,6 +79,7 @@ char **strtow(char *str)
 				c++;
 			}
 			words[b][c] = '\0';
+			b++; c = 0; length = 0; str++;
 		}
 	}
 	return (words);
