@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 /**
  * main - Entry point
@@ -7,8 +6,13 @@
  */
 int main(void)
 {
-	write(STDOUT_FILENO, "and that piece of art is useful
-			\" - Dora Korpar, 2015-10-19\n", 59);
-	return (1);
+	const char message[] = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
+	
+	ssize_t bytes_written = fwrite(2, message, sizeof(message) - 1);
+	if (bytes_written == -1)
+	{
+		return (1);
+	}
+	return (0);
 }
 
